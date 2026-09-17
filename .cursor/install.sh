@@ -7,11 +7,17 @@
 # Agent VM: it installs Tkinter, Korean fonts, and a headless X stack, then
 # creates a virtualenv with the Linux-compatible subset of requirements.txt.
 #
+# The virtualenv lives OUTSIDE the git working tree (default:
+# $HOME/.venvs/truckinfo) so it survives a fresh checkout when running from a
+# prebuilt environment build that skips install on boot.
+#
 # Idempotent: safe to run repeatedly.
 set -euo pipefail
 
 # Always operate from the repository root regardless of invocation cwd.
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+VENV_DIR="${TRUCK_INFO_VENV:-$HOME/.venvs/truckinfo}"
 
 echo "[install] Installing system packages (Tkinter, Korean fonts, headless X)..."
 export DEBIAN_FRONTEND=noninteractive
@@ -27,12 +33,13 @@ sudo apt-get install -y --no-install-recommends \
   imagemagick \
   scrot
 
-echo "[install] Creating Python virtualenv (.venv)..."
-if [ ! -d .venv ]; then
-  python3 -m venv .venv
+echo "[install] Creating Python virtualenv at ${VENV_DIR}..."
+mkdir -p "$(dirname "${VENV_DIR}")"
+if [ ! -x "${VENV_DIR}/bin/python" ]; then
+  python3 -m venv "${VENV_DIR}"
 fi
 # shellcheck disable=SC1091
-. .venv/bin/activate
+. "${VENV_DIR}/bin/activate"
 python -m pip install --upgrade pip
 
 echo "[install] Installing Python dependencies (excluding Windows-only packages)..."
@@ -50,4 +57,4 @@ print("[install] Imports OK: tkinter", tkinter.TkVersion,
       "| pandas", pandas.__version__)
 PY
 
-echo "[install] Done."
+echo "[install] Done. Virtualenv: ${VENV_DIR}"
