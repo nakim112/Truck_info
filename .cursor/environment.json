@@ -1,0 +1,5 @@
+{
+  "name": "Truck Info (INC4 HUB)",
+  "install": "bash .cursor/install.sh",
+  "start": "bash .cursor/start.sh"
+}
