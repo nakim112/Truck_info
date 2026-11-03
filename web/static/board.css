@@ -1,0 +1,35 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #050a18;
+  color: #fff;
+  font-family: "Malgun Gothic", "맑은 고딕", "Nanum Gothic", "Noto Sans CJK KR", sans-serif;
+}
+.board-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 18px 28px;
+  border-bottom: 2px solid #1a2a4a;
+}
+.board-logo { font-size: 30px; font-weight: 800; color: #ffd166; }
+.board-title { font-size: 26px; font-weight: 700; letter-spacing: 1px; }
+.board-clock { margin-left: auto; font-size: 28px; font-weight: 700; color: #ffd700; font-variant-numeric: tabular-nums; }
+
+.board-grid { width: 100%; border-collapse: collapse; font-size: 26px; }
+.board-grid thead th {
+  background: #0a1a3a;
+  color: #9fb8d6;
+  padding: 16px 20px;
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 2px solid #1a2a4a;
+}
+.board-grid tbody td { padding: 16px 20px; border-bottom: 1px solid #12224a; }
+.board-grid tbody tr:nth-child(odd) { background: #0a1a3a; }
+.board-grid tbody tr:nth-child(even) { background: #10224a; }
+.status-docked { color: #28e07b; font-weight: 800; }
+.status-waiting { color: #ffd166; font-weight: 800; }
+.status-alert { color: #ff5c5c; font-weight: 800; }
+.board-empty { text-align: center; font-size: 24px; color: #7e95a7; padding: 40px 0; }
+.board-empty.hidden { display: none; }
