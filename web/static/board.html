@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INC4 차량정보 전광판</title>
+  <link rel="stylesheet" href="/static/board.css" />
+</head>
+<body>
+  <header class="board-head">
+    <span class="board-logo">coupang</span>
+    <span class="board-title">INC4 차량정보</span>
+    <span id="clock" class="board-clock"></span>
+  </header>
+  <table class="board-grid">
+    <thead>
+      <tr>
+        <th>상태</th>
+        <th>Type</th>
+        <th>캠프명</th>
+        <th>도크</th>
+        <th>호차</th>
+        <th>차량번호</th>
+        <th>접안시간</th>
+      </tr>
+    </thead>
+    <tbody id="board-body"></tbody>
+  </table>
+  <p id="board-empty" class="board-empty">표시할 차량이 없습니다.</p>
+  <script src="/static/board.js"></script>
+</body>
+</html>

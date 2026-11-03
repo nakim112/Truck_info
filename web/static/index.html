@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HUB 차량 정보 시스템 (Web)</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-logo">coupang</span>
+      <span class="brand-title">HUB 차량 정보 시스템</span>
+      <span class="brand-sub">Web Edition</span>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-dark" href="/board" target="_blank" rel="noopener">🖥️ 전광판 열기</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card form-card">
+      <h2 class="card-title">차량 등록</h2>
+      <form id="record-form" class="record-form">
+        <div class="field">
+          <label for="type">Type</label>
+          <select id="type" required></select>
+        </div>
+        <div class="field">
+          <label for="camp">캠프명</label>
+          <input id="camp" list="camp-options" autocomplete="off" />
+          <datalist id="camp-options"></datalist>
+        </div>
+        <div class="field">
+          <label for="dock">접안 도크</label>
+          <input id="dock" list="dock-options" autocomplete="off" />
+          <datalist id="dock-options"></datalist>
+        </div>
+        <div class="field">
+          <label for="hocha">호차</label>
+          <input id="hocha" list="hocha-options" autocomplete="off" />
+          <datalist id="hocha-options"></datalist>
+        </div>
+        <div class="field">
+          <label for="car_num">차량번호</label>
+          <input id="car_num" autocomplete="off" placeholder="예: 12가3456" />
+        </div>
+        <div class="field">
+          <label for="phone">전화번호</label>
+          <input id="phone" autocomplete="off" placeholder="010-0000-0000" />
+        </div>
+        <div class="field">
+          <label for="time">접안시간</label>
+          <input id="time" autocomplete="off" placeholder="HH:MM" maxlength="5" />
+        </div>
+        <div class="field field-submit">
+          <button type="submit" class="btn btn-success">+ 등록</button>
+        </div>
+      </form>
+      <p id="form-msg" class="form-msg" role="alert"></p>
+    </section>
+
+    <section class="toolbar">
+      <div class="toolbar-left">
+        <label for="status-select" class="toolbar-label">상태 변경</label>
+        <select id="status-select"></select>
+        <button id="apply-status" class="btn btn-primary" disabled>적용</button>
+        <button id="delete-selected" class="btn btn-danger" disabled>삭제</button>
+      </div>
+      <div class="toolbar-right">
+        <span id="count" class="count-badge">0건</span>
+        <button id="clear-all" class="btn btn-danger-outline">전체 삭제</button>
+        <button id="refresh" class="btn btn-neutral">새로고침</button>
+      </div>
+    </section>
+
+    <section class="card table-card">
+      <table class="grid" id="grid">
+        <thead>
+          <tr>
+            <th class="col-sel"><input type="checkbox" id="select-all" title="전체 선택" /></th>
+            <th>상태</th>
+            <th>Delivery Type</th>
+            <th>캠프명</th>
+            <th>접안 도크</th>
+            <th>호차</th>
+            <th>차량번호</th>
+            <th>전화번호</th>
+            <th>접안시간</th>
+          </tr>
+        </thead>
+        <tbody id="grid-body"></tbody>
+      </table>
+      <p id="empty-msg" class="empty-msg">등록된 차량이 없습니다. 위에서 차량을 등록하세요.</p>
+    </section>
+  </main>
+
+  <footer class="statusbar">
+    <span>INC4 HUB | Web Edition | exe 없이 브라우저로 사용</span>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

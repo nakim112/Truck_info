@@ -1,0 +1,5 @@
+# INC4 HUB 차량 정보 시스템 - 웹 버전 의존성
+# 데스크톱/빌드 전용 라이브러리(pywin32, selenium, pyinstaller 등) 없이
+# 순수 Python 웹 스택만 사용합니다. exe 빌드가 필요 없습니다.
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
